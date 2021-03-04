@@ -27,10 +27,10 @@ int main(){
 	char **tokens = tokenize(input);
 	print_tokens(tokens);
 	add_history(history, input);// since we need to keep track of history
-	free_tokens(tokens)
+	free_tokens(tokens);
       }
       else if(input[0] == '!'){
-	char *hist = get_history(history,i);// needed to convert string to int
+	char *hist = get_history(history,atoi(input+1));
 	char **tokens = tokenize(hist);
 	printf("Retrieved history: %s\n", hist);
 	printf("Tokenized history: %s\n", tokens);

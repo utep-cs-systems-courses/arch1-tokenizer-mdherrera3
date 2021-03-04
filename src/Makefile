@@ -1,12 +1,17 @@
-tokenizer: tokenizer.o simpleui.o history.o
-	cc -o tokenizer tokenizer.o simpleui.o history.o
+OBJS= tokenizer.o simpleui.o history.o
+
+all:simpleui
+
+simpleui:$(OBJS)
+
+	cc -o simpleui $(CFLAGS) $(OBJS)
+
+$(OBJS): tokenizer.h history.h
+
 
 clean:
 
-	rm -f *.o tokenizer
+	rm -f *.o simpleui
 
-tokenizer.o: tokenizer.h tokenizer.c
-
-simpleui.o: simpleui.c tokenizer.h history.h
-
-history.o: history.h history.c tokenizer.h
+run: simpleui
+	./simpleui
